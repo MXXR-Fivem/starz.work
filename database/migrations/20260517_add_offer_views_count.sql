@@ -1,0 +1,2 @@
+ALTER TABLE offers
+    ADD COLUMN views_count INT UNSIGNED NOT NULL DEFAULT 0 AFTER premium;

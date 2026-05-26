@@ -1,0 +1,2 @@
+ALTER TABLE users
+    ADD COLUMN dark_mode TINYINT(1) NOT NULL DEFAULT 0 AFTER cv_filename;

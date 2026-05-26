@@ -1,0 +1,113 @@
+services:
+  mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    command: ["mysqld", "--log-error-verbosity=2"]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-change_me_root_password}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-job_aggregator}
+      MYSQL_USER: ${MYSQL_USER:-starz_app}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-change_me_app_password}
+    volumes:
+      - ../../database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - mysql_data:/var/lib/mysql
+    networks:
+      - db_network
+    ports:
+      - "127.0.0.1:3307:3306"
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD"]
+      start_period: 20s
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ../../starz-backend
+      dockerfile: ../deploy/online/Dockerfile.backend
+    restart: unless-stopped
+    env_file:
+      - path: ../../starz-backend/.env
+        required: false
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      UPLOAD_DIR: uploads
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: ${MYSQL_DATABASE:-job_aggregator}
+      DB_USER: ${MYSQL_USER:-starz_app}
+      DB_PASSWORD: ${MYSQL_PASSWORD:-change_me_app_password}
+    ports:
+      - "127.0.0.1:${BACKEND_HOST_PORT:-3001}:3001"
+    volumes:
+      - ../../database/migrations:/database/migrations:ro
+      - backend_uploads:/app/uploads
+    networks:
+      - app_network
+      - db_network
+    depends_on:
+      mysql:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1:3001/health"]
+      start_period: 20s
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  ai-service:
+    build:
+      context: ../../ai-service
+      dockerfile: ../deploy/online/Dockerfile.ai-service
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${AI_HOST_PORT:-8083}:8000"
+    networks:
+      - app_network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=2)"]
+      start_period: 30s
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  frontend:
+    build:
+      context: ../../starz-frontend
+      dockerfile: ../deploy/online/Dockerfile.frontend
+    restart: unless-stopped
+    env_file:
+      - path: ../../starz-frontend/.env
+        required: false
+    environment:
+      NODE_ENV: production
+      NEXT_TELEMETRY_DISABLED: "1"
+      INTERNAL_API_URL: http://backend:3001
+    ports:
+      - "127.0.0.1:${FRONTEND_HOST_PORT:-3002}:3000"
+    networks:
+      - app_network
+    depends_on:
+      backend:
+        condition: service_healthy
+      ai-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1:3000/"]
+      start_period: 20s
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  mysql_data:
+  backend_uploads:
+
+networks:
+  app_network:
+  db_network:

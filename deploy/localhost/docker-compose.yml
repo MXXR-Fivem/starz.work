@@ -1,0 +1,103 @@
+services:
+  mysql:
+    image: mysql:8.0
+    restart: always
+    command: ["mysqld", "--log-error-verbosity=2"]
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-job_aggregator}
+      MYSQL_USER: ${MYSQL_USER:-app}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-app}
+    volumes:
+      - ../../database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro,Z
+      - mysql_data:/var/lib/mysql
+    networks:
+      - db_network
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+      start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  backend:
+    build:
+      context: ../../starz-backend
+      dockerfile: ../deploy/localhost/Dockerfile.backend
+    ports:
+      - "${BACKEND_PORT:-3001}:3001"
+    env_file:
+      - path: ../../starz-backend/.env
+        required: false
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: ${MYSQL_DATABASE:-job_aggregator}
+      DB_USER: ${MYSQL_USER:-app}
+      DB_PASSWORD: ${MYSQL_PASSWORD:-app}
+    networks:
+      - app_network
+      - db_network
+    volumes:
+      - ../../database/migrations:/database/migrations:ro,Z
+      - backend_uploads:/app/uploads
+    depends_on:
+      mysql:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3001/health"]
+      start_period: 10s
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  frontend:
+    build:
+      context: ../../starz-frontend
+      dockerfile: ../deploy/localhost/Dockerfile.frontend
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    env_file:
+      - path: ../../starz-frontend/.env
+        required: false
+    environment:
+      NEXT_TELEMETRY_DISABLED: "1"
+      INTERNAL_API_URL: http://backend:3001
+    networks:
+      - app_network
+    depends_on:
+      backend:
+        condition: service_healthy
+  phpmyadmin:
+    image: phpmyadmin:5.2.3
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      - PMA_HOST=mysql
+    networks:
+      - db_network
+    depends_on:
+      mysql:
+        condition: service_healthy
+  ai-service:
+    build:
+      context: ../../ai-service/
+      dockerfile: ../deploy/localhost/Dockerfile.ai-service
+    ports:
+        - "${AI_PORT:-8080}:8000"
+    depends_on:
+      backend:
+          condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=2)"]
+      start_period: 30s
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mysql_data:
+  backend_uploads:
+
+networks:
+  app_network:
+  db_network:

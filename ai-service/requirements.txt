@@ -1,0 +1,5 @@
+fastapi #frameworkAPI
+uvicorn #serveur qui fais tourner FASTAPI
+spacy #lib nlp pour extraire les keyword
+python-multipart
+pypdf

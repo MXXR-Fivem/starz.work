@@ -1,0 +1,24 @@
+export type iOffers = {
+    id: number;
+    companyId: number;
+    companyName: string;
+    title: string;
+    description?: string;
+    descriptionPreview?: string;
+    location?: string;
+    contractType?: string;
+    remotePolicy?: string;
+    status: "draft" | "published" | "closed";
+    moderationStatus: "approved" | "rejected";
+    premium: boolean;
+    salaryMin?: number;
+    salaryMax?: number;
+    salaryCurrency: string;
+    salaryPeriod?: "yearly" | "daily";
+    sourcePostedAt?: string | null;
+    publishedAt?: string | null;
+    expiresAt?: string | null;
+    skills: { id: number; name: string }[];
+    createdAt: string;
+    updatedAt: string;
+};

@@ -1,0 +1,1818 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Starz.work
+meta:
+  id: wrk_fa1279ead8a34f5984adeaaea037a6ea
+  created: 1776942105596
+  modified: 1776944910904
+  description: ""
+collection:
+  - url: "{{BASE_URL}}/health"
+    name: /health
+    meta:
+      id: req_f440bec2241d4ecdae6872148c4675bc
+      created: 1776942105658
+      modified: 1776944993021
+      isPrivate: false
+      description: ""
+      sortKey: -1776944711078
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/auth/register"
+    name: /auth/register
+    meta:
+      id: req_58bcf0b5156f4fc38144cd4a86fde862
+      created: 1776942317637
+      modified: 1776945007165
+      isPrivate: false
+      description: ""
+      sortKey: -1776944711028
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email": "{{TEST_EMAIL}}",
+          "password": "Password123!",
+          "firstName": "Theo",
+          "lastName": "Martin"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/auth/login"
+    name: /auth/login
+    meta:
+      id: req_51105f78b6734c0fa99891c393574c91
+      created: 1776944204827
+      modified: 1776945082456
+      isPrivate: false
+      description: ""
+      sortKey: -1776944711003
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "email": "{{TEST_EMAIL}}",
+          "password": "Password456!"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/me"
+    name: /me
+    meta:
+      id: req_ab586223f02c401a9a1f188a2eca1714
+      created: 1776944315056
+      modified: 1776945089850
+      isPrivate: false
+      description: ""
+      sortKey: -1776944710990.5
+    method: GET
+    body:
+      mimeType: application/json
+      text: ""
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/me"
+    name: /me
+    meta:
+      id: req_2c1d0b0f2f4547b3ba2a225af49bbca2
+      created: 1776944380633
+      modified: 1776945061180
+      isPrivate: false
+      description: ""
+      sortKey: -1776944380633
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "firstName": "Théo 15",
+          "darkMode": true
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/me/password"
+    name: /me/password
+    meta:
+      id: req_dbd775e2ccef4a1897c1e47683e9d474
+      created: 1776944576471
+      modified: 1776945052050
+      isPrivate: false
+      description: ""
+      sortKey: -1776944576471
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "currentPassword": "Password123!",
+          "newPassword": "Password456!"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/auth/refresh"
+    name: /auth/refresh
+    meta:
+      id: req_f353fda7c6cb4ad9bc16c4caf7555645
+      created: 1776944710978
+      modified: 1776945036655
+      isPrivate: false
+      description: ""
+      sortKey: -1776944710978
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "refreshToken": "{{REFRESH_TOKEN}}"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/auth/logout"
+    name: /auth/logout
+    meta:
+      id: req_af7abd021f264715ba013578b1cfde99
+      created: 1776945107323
+      modified: 1776945234231
+      isPrivate: false
+      description: ""
+      sortKey: -1776944710996.75
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "refreshToken": "{{REFRESH_TOKEN}}"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/auth/forgot-password"
+    name: /auth/forgot-password
+    meta:
+      id: req_493e2e189096445ebb3421ccce07c1d9
+      created: 1776945974711
+      modified: 1776946336442
+      isPrivate: false
+      description: ""
+      sortKey: -1776944677351.25
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email": "{{TEST_EMAIL}}"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/auth/resend-verification"
+    name: /auth/resend-verification
+    meta:
+      id: req_5fd4e64c380c4fd986a09aaa8055264d
+      created: 1776946165124
+      modified: 1776946348002
+      isPrivate: false
+      description: ""
+      sortKey: -1776944694164.625
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email": "{{TEST_EMAIL}}"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/auth/verify-email"
+    name: /auth/verify-email
+    meta:
+      id: req_b93db6e795eb40d9b3cb7f9676d95f5e
+      created: 1776946379924
+      modified: 1776946581719
+      isPrivate: false
+      description: ""
+      sortKey: -1776944685757.9375
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email": "{{TEST_EMAIL}}",
+          "code": "{{VERIFY_EMAIL_CODE}}"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/offers?page=0&size=20"
+    name: /offers
+    meta:
+      id: req_8a4b0b31b4c34a45af85f9c9b240f001
+      created: 1776947000001
+      modified: 1776947000001
+      isPrivate: false
+      description: ""
+      sortKey: -1776944600000
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/offers?q=react&skills=node,typescript&lat=48.8566&lng=2.3522&radiusKm=25&page=0&size=10&sortBy=distance&sortOrder=asc"
+    name: /offers (search)
+    meta:
+      id: req_1ef2f65176df4a8a80f80c6f68d7d002
+      created: 1776947000002
+      modified: 1776947000002
+      isPrivate: false
+      description: ""
+      sortKey: -1776944599900
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/offers/{{OFFER_ID}}"
+    name: /offers/:id
+    meta:
+      id: req_2f9df6c11c2f4ee3b1f8d7ba3d3b9003
+      created: 1776947000003
+      modified: 1776947000003
+      isPrivate: false
+      description: ""
+      sortKey: -1776944599800
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/offers"
+    name: /offers
+    meta:
+      id: req_13de37d9d4d14595a0ed4b48f244e004
+      created: 1776947000004
+      modified: 1776947000004
+      isPrivate: false
+      description: ""
+      sortKey: -1776944599700
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "companyId": {{COMPANY_ID}},
+          "title": "Senior Backend Engineer",
+          "description": "Build robust APIs and data pipelines.",
+          "descriptionPreview": "Build robust APIs and data pipelines.",
+          "location": "Paris, France",
+          "latitude": 48.8566,
+          "longitude": 2.3522,
+          "contractType": "permanent",
+          "remotePolicy": "hybrid",
+          "status": "draft",
+          "moderationStatus": "approved",
+          "premium": false,
+          "salaryMin": 55,
+          "salaryMax": 70,
+          "salaryCurrency": "EUR",
+          "skills": ["NodeJS", "TypeScript", "SQL"]
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/offers/{{OFFER_ID}}"
+    name: /offers/:id
+    meta:
+      id: req_266af5f98fbc4b968e7a6afefcddc005
+      created: 1776947000005
+      modified: 1776947000005
+      isPrivate: false
+      description: ""
+      sortKey: -1776944599600
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "title": "Senior Backend Engineer (Updated)",
+          "remotePolicy": "full_remote",
+          "salaryMin": 60,
+          "salaryMax": 75,
+          "skills": ["NodeJS", "TypeScript", "PostgreSQL"]
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/offers/{{OFFER_ID}}"
+    name: /offers/:id
+    meta:
+      id: req_224b32e2f2d449f082dc6682cbf3d006
+      created: 1776947000006
+      modified: 1776947000006
+      isPrivate: false
+      description: ""
+      sortKey: -1776944599500
+    method: DELETE
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/offers/{{OFFER_ID}}/publish"
+    name: /offers/:id/publish
+    meta:
+      id: req_e02e1e1381d1458098c2eb92a2ec1007
+      created: 1776947000007
+      modified: 1776947000007
+      isPrivate: false
+      description: ""
+      sortKey: -1776944599400
+    method: PATCH
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/offers/{{OFFER_ID}}/close"
+    name: /offers/:id/close
+    meta:
+      id: req_76739ec7b3ca4b95983ff6c4f9c641008
+      created: 1776947000008
+      modified: 1776947000008
+      isPrivate: false
+      description: ""
+      sortKey: -1776944599300
+    method: PATCH
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/offers/{{OFFER_ID}}/archive"
+    name: /offers/:id/archive
+    meta:
+      id: req_188eb90b582844f99aaf6de59e7e1009
+      created: 1776947000009
+      modified: 1776947000009
+      isPrivate: false
+      description: ""
+      sortKey: -1776944599200
+    method: PATCH
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/offers/{{OFFER_ID}}/restore"
+    name: /offers/:id/restore
+    meta:
+      id: req_8b85a64a050a4cc2984cf57a93ee2010
+      created: 1776947000010
+      modified: 1776947000010
+      isPrivate: false
+      description: ""
+      sortKey: -1776944599100
+    method: PATCH
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/offers/{{OFFER_ID}}/moderation-status"
+    name: /offers/:id/moderation-status
+    meta:
+      id: req_49530f98f1a84ca1b5f0bfd6c75a0011
+      created: 1776947000011
+      modified: 1776947000011
+      isPrivate: false
+      description: ""
+      sortKey: -1776944599000
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "moderationStatus": "approved"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/offers/{{OFFER_ID}}/skills"
+    name: /offers/:id/skills
+    meta:
+      id: req_037e8efd5f9845e6b2a01a5f5d46f012
+      created: 1776947000012
+      modified: 1776947000012
+      isPrivate: false
+      description: ""
+      sortKey: -1776944598900
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/offers/{{OFFER_ID}}/skills"
+    name: /offers/:id/skills
+    meta:
+      id: req_5893cb2ff2bd4a4ab4230bd8eb239013
+      created: 1776947000013
+      modified: 1776947000013
+      isPrivate: false
+      description: ""
+      sortKey: -1776944598800
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "skills": ["Docker", "CI/CD"]
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/offers/{{OFFER_ID}}/skills/{{SKILL_ID}}"
+    name: /offers/:id/skills/:skillId
+    meta:
+      id: req_69fa7e6d8fb14cc4b3b8dc9ee2332014
+      created: 1776947000014
+      modified: 1776947000014
+      isPrivate: false
+      description: ""
+      sortKey: -1776944598700
+    method: DELETE
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/offers/{{OFFER_ID}}/sources"
+    name: /offers/:id/sources
+    meta:
+      id: req_eb9c92cc2b444616998d39a06114f015
+      created: 1776947000015
+      modified: 1776947000015
+      isPrivate: false
+      description: ""
+      sortKey: -1776944598600
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/offers/{{OFFER_ID}}/sources"
+    name: /offers/:id/sources
+    meta:
+      id: req_59299a5b804c4ed4878b49bcfea5f016
+      created: 1776947000016
+      modified: 1776947000016
+      isPrivate: false
+      description: ""
+      sortKey: -1776944598500
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "sourceName": "manual",
+          "externalId": "manual-{{OFFER_ID}}",
+          "sourceUrl": "https://example.com/jobs/{{OFFER_ID}}",
+          "rawPayload": {
+            "createdBy": "team"
+          }
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/offers/{{OFFER_ID}}/sources/{{SOURCE_ID}}"
+    name: /offers/:id/sources/:sourceId
+    meta:
+      id: req_11a34716fbe54071a3f4effc3115e017
+      created: 1776947000017
+      modified: 1776947000017
+      isPrivate: false
+      description: ""
+      sortKey: -1776944598400
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "sourceUrl": "https://example.com/jobs/{{OFFER_ID}}?updated=true",
+          "rawPayload": {
+            "updatedBy": "team"
+          }
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/offers/{{OFFER_ID}}/sources/{{SOURCE_ID}}"
+    name: /offers/:id/sources/:sourceId
+    meta:
+      id: req_1cf2c708da6743b4b7fe8035f91a8018
+      created: 1776947000018
+      modified: 1776947000018
+      isPrivate: false
+      description: ""
+      sortKey: -1776944598300
+    method: DELETE
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{BASE_URL}}/auth/reset-password"
+    name: /auth/reset-password
+    meta:
+      id: req_backend_reset_password
+      created: 1776948000001
+      modified: 1776948000001
+      isPrivate: false
+      description: ""
+      sortKey: -1776944598200
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "token": "{{RESET_PASSWORD_TOKEN}}",
+          "newPassword": "Password456!"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+  - url: "{{BASE_URL}}/auth/sessions"
+    name: /auth/sessions
+    meta:
+      id: req_backend_auth_sessions
+      created: 1776948000002
+      modified: 1776948000002
+      isPrivate: false
+      description: ""
+      sortKey: -1776944598100
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/me/data"
+    name: /me/data
+    meta:
+      id: req_backend_me_data
+      created: 1776948000003
+      modified: 1776948000003
+      isPrivate: false
+      description: ""
+      sortKey: -1776944598000
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/me/favorites"
+    name: /me/favorites
+    meta:
+      id: req_backend_me_favorites_add
+      created: 1776948000004
+      modified: 1776948000004
+      isPrivate: false
+      description: ""
+      sortKey: -1776944597900
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "offerId": {{OFFER_ID}}
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/me/favorites/{{OFFER_ID}}"
+    name: /me/favorites/:offerId
+    meta:
+      id: req_backend_me_favorites_delete
+      created: 1776948000005
+      modified: 1776948000005
+      isPrivate: false
+      description: ""
+      sortKey: -1776944597800
+    method: DELETE
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/applications"
+    name: /applications
+    meta:
+      id: req_backend_applications_create
+      created: 1776948000006
+      modified: 1776948000006
+      isPrivate: false
+      description: ""
+      sortKey: -1776944597700
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "offerId": {{OFFER_ID}},
+          "coverLetter": "Bonjour, je suis interesse par cette offre.",
+          "resumeUrl": null
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/applications?page=0&size=20"
+    name: /applications
+    meta:
+      id: req_backend_applications_list
+      created: 1776948000007
+      modified: 1776948000007
+      isPrivate: false
+      description: ""
+      sortKey: -1776944597600
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/applications/expired?page=0&size=20"
+    name: /applications/expired
+    meta:
+      id: req_backend_applications_expired
+      created: 1776948000008
+      modified: 1776948000008
+      isPrivate: false
+      description: ""
+      sortKey: -1776944597500
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/applications/{{APPLICATION_ID}}"
+    name: /applications/:applicationId
+    meta:
+      id: req_backend_applications_get
+      created: 1776948000009
+      modified: 1776948000009
+      isPrivate: false
+      description: ""
+      sortKey: -1776944597400
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/applications/{{APPLICATION_ID}}/withdraw"
+    name: /applications/:applicationId/withdraw
+    meta:
+      id: req_backend_applications_withdraw
+      created: 1776948000010
+      modified: 1776948000010
+      isPrivate: false
+      description: ""
+      sortKey: -1776944597300
+    method: PATCH
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/notifications?page=0&size=20"
+    name: /notifications
+    meta:
+      id: req_backend_notifications_list
+      created: 1776948000011
+      modified: 1776948000011
+      isPrivate: false
+      description: ""
+      sortKey: -1776944597200
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/notifications/seen"
+    name: /notifications/seen
+    meta:
+      id: req_backend_notifications_seen
+      created: 1776948000012
+      modified: 1776948000012
+      isPrivate: false
+      description: ""
+      sortKey: -1776944597100
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "all": true
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company"
+    name: /company
+    meta:
+      id: req_backend_company_create
+      created: 1776948000013
+      modified: 1776948000013
+      isPrivate: false
+      description: ""
+      sortKey: -1776944597000
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "Starz Recruiting",
+          "description": "Entreprise de test",
+          "websiteUrl": "https://example.com"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company"
+    name: /company
+    meta:
+      id: req_backend_company_get
+      created: 1776948000014
+      modified: 1776948000014
+      isPrivate: false
+      description: ""
+      sortKey: -1776944596900
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company/data"
+    name: /company/data
+    meta:
+      id: req_backend_company_data
+      created: 1776948000015
+      modified: 1776948000015
+      isPrivate: false
+      description: ""
+      sortKey: -1776944596800
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company/members"
+    name: /company/members
+    meta:
+      id: req_backend_company_members
+      created: 1776948000016
+      modified: 1776948000016
+      isPrivate: false
+      description: ""
+      sortKey: -1776944596700
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company/invitations"
+    name: /company/invitations
+    meta:
+      id: req_backend_company_invite
+      created: 1776948000017
+      modified: 1776948000017
+      isPrivate: false
+      description: ""
+      sortKey: -1776944596600
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email": "{{INVITED_EMAIL}}"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company/offers?page=0&size=20&q={{OFFER_SEARCH}}"
+    name: /company/offers
+    meta:
+      id: req_backend_company_offers
+      created: 1776948000018
+      modified: 1776948000018
+      isPrivate: false
+      description: ""
+      sortKey: -1776944596500
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company/offers"
+    name: /company/offers
+    meta:
+      id: req_backend_company_offer_create
+      created: 1776948000019
+      modified: 1776948000019
+      isPrivate: false
+      description: ""
+      sortKey: -1776944596400
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "title": "Backend Engineer",
+          "description": "Construire et maintenir les APIs.",
+          "descriptionPreview": "Construire et maintenir les APIs.",
+          "location": "Paris, France",
+          "contractType": "CDI",
+          "remotePolicy": "hybrid",
+          "status": "published",
+          "premium": false,
+          "salaryCurrency": "EUR",
+          "skills": ["NodeJS", "TypeScript"]
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company/offers/{{OFFER_ID}}/applications?page=0&size=20"
+    name: /company/offers/:offerId/applications
+    meta:
+      id: req_backend_company_offer_applications
+      created: 1776948000020
+      modified: 1776948000020
+      isPrivate: false
+      description: ""
+      sortKey: -1776944596300
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company/offers/{{OFFER_ID}}/applications/{{APPLICATION_ID}}"
+    name: /company/offers/:offerId/applications/:applicationId
+    meta:
+      id: req_backend_company_offer_application_get
+      created: 1776948000021
+      modified: 1776948000021
+      isPrivate: false
+      description: ""
+      sortKey: -1776944596200
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company/offers/{{OFFER_ID}}/applications/{{APPLICATION_ID}}/status"
+    name: /company/offers/:offerId/applications/:applicationId/status
+    meta:
+      id: req_backend_company_offer_application_status
+      created: 1776948000022
+      modified: 1776948000022
+      isPrivate: false
+      description: ""
+      sortKey: -1776944596100
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "status": "accepted"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/staff/data"
+    name: /staff/data
+    meta:
+      id: req_backend_staff_data
+      created: 1776948000023
+      modified: 1776948000023
+      isPrivate: false
+      description: ""
+      sortKey: -1776944596000
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/staff/users?q={{TEST_EMAIL}}&page=0&size=20"
+    name: /staff/users
+    meta:
+      id: req_backend_staff_users
+      created: 1776948000024
+      modified: 1776948000024
+      isPrivate: false
+      description: ""
+      sortKey: -1776944595900
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/staff/companies?page=0&size=20"
+    name: /staff/companies
+    meta:
+      id: req_backend_staff_companies
+      created: 1776948000025
+      modified: 1776948000025
+      isPrivate: false
+      description: ""
+      sortKey: -1776944595800
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/staff/offers?page=0&size=20"
+    name: /staff/offers
+    meta:
+      id: req_backend_staff_offers
+      created: 1776948000026
+      modified: 1776948000026
+      isPrivate: false
+      description: ""
+      sortKey: -1776944595700
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/auth/oauth/{{OAUTH_PROVIDER}}/url?redirectUri=http://localhost:3000/auth/callback/{{OAUTH_PROVIDER}}&state={\"provider\":\"{{OAUTH_PROVIDER}}\",\"mode\":\"login\",\"redirectTo\":\"/\"}"
+    name: /auth/oauth/:provider/url
+    meta:
+      id: req_backend_auth_oauth_url
+      created: 1776948000027
+      modified: 1776948000027
+      isPrivate: false
+      description: "Exemple login OAuth. Pour une liaison de compte, remplacer state.mode par link et redirectTo par /profile."
+      sortKey: -1776944595600
+    method: GET
+  - url: "{{BASE_URL}}/auth/oauth/{{OAUTH_PROVIDER}}"
+    name: /auth/oauth/:provider
+    meta:
+      id: req_backend_auth_oauth_callback
+      created: 1776948000028
+      modified: 1776948000028
+      isPrivate: false
+      description: ""
+      sortKey: -1776944595500
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "code": "oauth-code",
+          "redirectUri": "http://localhost:3000/auth/callback/{{OAUTH_PROVIDER}}"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+  - url: "{{BASE_URL}}/auth/sessions/{{SESSION_ID}}"
+    name: /auth/sessions/:sessionId
+    meta:
+      id: req_backend_auth_session_delete
+      created: 1776948000029
+      modified: 1776948000029
+      isPrivate: false
+      description: ""
+      sortKey: -1776944595400
+    method: DELETE
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/auth/sessions"
+    name: /auth/sessions
+    meta:
+      id: req_backend_auth_sessions_delete
+      created: 1776948000030
+      modified: 1776948000030
+      isPrivate: false
+      description: ""
+      sortKey: -1776944595300
+    method: DELETE
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/me"
+    name: /me
+    meta:
+      id: req_backend_me_delete
+      created: 1776948000031
+      modified: 1776948000031
+      isPrivate: false
+      description: ""
+      sortKey: -1776944595200
+    method: DELETE
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/me/profile-photo"
+    name: /me/profile-photo
+    meta:
+      id: req_backend_me_profile_photo
+      created: 1776948000032
+      modified: 1776948000032
+      isPrivate: false
+      description: "Body multipart: file=profilePhoto"
+      sortKey: -1776944595100
+    method: PUT
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/me/cv"
+    name: /me/cv
+    meta:
+      id: req_backend_me_cv
+      created: 1776948000033
+      modified: 1776948000033
+      isPrivate: false
+      description: "Body multipart: file=cv"
+      sortKey: -1776944595000
+    method: PUT
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/me/oauth/{{OAUTH_PROVIDER}}"
+    name: /me/oauth/:provider
+    meta:
+      id: req_backend_me_oauth_link
+      created: 1776948000034
+      modified: 1776948000034
+      isPrivate: false
+      description: ""
+      sortKey: -1776944594900
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "code": "oauth-code",
+          "redirectUri": "http://localhost:3000/auth/callback/{{OAUTH_PROVIDER}}"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/me/favorites?page=0&size=20"
+    name: /me/favorites
+    meta:
+      id: req_backend_me_favorites_get
+      created: 1776948000035
+      modified: 1776948000035
+      isPrivate: false
+      description: ""
+      sortKey: -1776944594800
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company"
+    name: /company
+    meta:
+      id: req_backend_company_patch
+      created: 1776948000036
+      modified: 1776948000036
+      isPrivate: false
+      description: ""
+      sortKey: -1776944594700
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "description": "Description mise à jour"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company/logo"
+    name: /company/logo
+    meta:
+      id: req_backend_company_logo
+      created: 1776948000037
+      modified: 1776948000037
+      isPrivate: false
+      description: "Body multipart: file=logo"
+      sortKey: -1776944594600
+    method: PUT
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company/members/{{USER_ID}}"
+    name: /company/members/:userId
+    meta:
+      id: req_backend_company_member_delete
+      created: 1776948000038
+      modified: 1776948000038
+      isPrivate: false
+      description: ""
+      sortKey: -1776944594500
+    method: DELETE
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company/invitations"
+    name: /company/invitations
+    meta:
+      id: req_backend_company_invitations_get
+      created: 1776948000039
+      modified: 1776948000039
+      isPrivate: false
+      description: ""
+      sortKey: -1776944594400
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company/invitations/{{INVITATION_ID}}/accept"
+    name: /company/invitations/:invitationId/accept
+    meta:
+      id: req_backend_company_invitation_accept
+      created: 1776948000040
+      modified: 1776948000040
+      isPrivate: false
+      description: ""
+      sortKey: -1776944594300
+    method: POST
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company/invitations/{{INVITATION_ID}}/decline"
+    name: /company/invitations/:invitationId/decline
+    meta:
+      id: req_backend_company_invitation_decline
+      created: 1776948000041
+      modified: 1776948000041
+      isPrivate: false
+      description: ""
+      sortKey: -1776944594200
+    method: POST
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company/offers/{{OFFER_ID}}"
+    name: /company/offers/:offerId
+    meta:
+      id: req_backend_company_offer_patch
+      created: 1776948000042
+      modified: 1776948000042
+      isPrivate: false
+      description: ""
+      sortKey: -1776944594100
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "title": "Titre mis à jour"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company/offers/{{OFFER_ID}}/close"
+    name: /company/offers/:offerId/close
+    meta:
+      id: req_backend_company_offer_close
+      created: 1776948000043
+      modified: 1776948000043
+      isPrivate: false
+      description: ""
+      sortKey: -1776944594000
+    method: PATCH
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/staff/users/{{USER_ID}}"
+    name: /staff/users/:userId
+    meta:
+      id: req_backend_staff_user_get
+      created: 1776948000044
+      modified: 1776948000044
+      isPrivate: false
+      description: ""
+      sortKey: -1776944593900
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/staff/users/{{USER_ID}}/ban"
+    name: /staff/users/:userId/ban
+    meta:
+      id: req_backend_staff_user_ban
+      created: 1776948000045
+      modified: 1776948000045
+      isPrivate: false
+      description: ""
+      sortKey: -1776944593800
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "reason": "Non respect des regles de la plateforme"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/staff/users/{{USER_ID}}/unban"
+    name: /staff/users/:userId/unban
+    meta:
+      id: req_backend_staff_user_unban
+      created: 1776948000046
+      modified: 1776948000046
+      isPrivate: false
+      description: ""
+      sortKey: -1776944593700
+    method: PATCH
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/staff/users/{{USER_ID}}"
+    name: /staff/users/:userId
+    meta:
+      id: req_backend_staff_user_delete
+      created: 1776948000047
+      modified: 1776948000047
+      isPrivate: false
+      description: ""
+      sortKey: -1776944593600
+    method: DELETE
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/staff/companies/{{COMPANY_ID}}"
+    name: /staff/companies/:companyId
+    meta:
+      id: req_backend_staff_company_get
+      created: 1776948000048
+      modified: 1776948000048
+      isPrivate: false
+      description: ""
+      sortKey: -1776944593500
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/staff/companies/{{COMPANY_ID}}"
+    name: /staff/companies/:companyId
+    meta:
+      id: req_backend_staff_company_patch
+      created: 1776948000049
+      modified: 1776948000049
+      isPrivate: false
+      description: ""
+      sortKey: -1776944593400
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "description": "Description modérée"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/staff/companies/{{COMPANY_ID}}"
+    name: /staff/companies/:companyId
+    meta:
+      id: req_backend_staff_company_delete
+      created: 1776948000050
+      modified: 1776948000050
+      isPrivate: false
+      description: ""
+      sortKey: -1776944593300
+    method: DELETE
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/staff/offers/{{OFFER_ID}}"
+    name: /staff/offers/:offerId
+    meta:
+      id: req_backend_staff_offer_patch
+      created: 1776948000051
+      modified: 1776948000051
+      isPrivate: false
+      description: ""
+      sortKey: -1776944593200
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "title": "Titre modéré"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/staff/offers/{{OFFER_ID}}/moderation-status"
+    name: /staff/offers/:offerId/moderation-status
+    meta:
+      id: req_backend_staff_offer_moderation
+      created: 1776948000052
+      modified: 1776948000052
+      isPrivate: false
+      description: ""
+      sortKey: -1776944593100
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "moderationStatus": "approved"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/staff/offers/{{OFFER_ID}}"
+    name: /staff/offers/:offerId
+    meta:
+      id: req_backend_staff_offer_delete
+      created: 1776948000053
+      modified: 1776948000053
+      isPrivate: false
+      description: ""
+      sortKey: -1776944593000
+    method: DELETE
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/offers/random"
+    name: /offers/random
+    meta:
+      id: req_backend_offers_random
+      created: 1776948000054
+      modified: 1776948000054
+      isPrivate: false
+      description: ""
+      sortKey: -1776944592900
+    method: GET
+  - url: "{{BASE_URL}}/me/delete-code"
+    name: /me/delete-code
+    meta:
+      id: req_backend_me_delete_code
+      created: 1776948000055
+      modified: 1776948000055
+      isPrivate: false
+      description: ""
+      sortKey: -1776944592800
+    method: POST
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/me/password-code"
+    name: /me/password-code
+    meta:
+      id: req_backend_me_password_code
+      created: 1776948000056
+      modified: 1776948000056
+      isPrivate: false
+      description: ""
+      sortKey: -1776944592700
+    method: POST
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company/activity"
+    name: /company/activity
+    meta:
+      id: req_backend_company_activity
+      created: 1776948000057
+      modified: 1776948000057
+      isPrivate: false
+      description: ""
+      sortKey: -1776944592600
+    method: GET
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/company/members/me"
+    name: /company/members/me
+    meta:
+      id: req_backend_company_members_me
+      created: 1776948000058
+      modified: 1776948000058
+      isPrivate: false
+      description: ""
+      sortKey: -1776944592500
+    method: DELETE
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+  - url: "{{BASE_URL}}/staff/welovedevs-sync"
+    name: /staff/welovedevs-sync
+    meta:
+      id: req_backend_staff_welovedevs_sync
+      created: 1776948000059
+      modified: 1776948000059
+      isPrivate: false
+      description: ""
+      sortKey: -1776944592400
+    method: POST
+    headers:
+      - name: Authorization
+        value: Bearer {{ACCESS_TOKEN}}
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_e31f89676162bdc5bf0767c9aa1e8ab4535f2e70
+    created: 1776942105601
+    modified: 1776942105601
+environments:
+  name: Base Environment
+  meta:
+    id: env_e31f89676162bdc5bf0767c9aa1e8ab4535f2e70
+    created: 1776942105599
+    modified: 1776944890333
+    isPrivate: false
+  data:
+    BASE_URL: http://localhost:3001
+    ACCESS_TOKEN: ""
+    REFRESH_TOKEN: ""
+    TEST_EMAIL: user@example.com
+    INVITED_EMAIL: invited@example.com
+    OAUTH_PROVIDER: google
+    VERIFY_EMAIL_CODE: "123456"
+    RESET_PASSWORD_TOKEN: ""
+    COMPANY_ID: 1
+    USER_ID: 1
+    SESSION_ID: 1
+    INVITATION_ID: 1
+    OFFER_ID: 1
+    OFFER_SEARCH: backend
+    APPLICATION_ID: 1
+    NOTIFICATION_ID: 1
+    SKILL_ID: 1
+    SOURCE_ID: 1

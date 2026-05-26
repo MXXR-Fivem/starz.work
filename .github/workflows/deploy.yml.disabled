@@ -1,0 +1,138 @@
+# Example workflow only.
+# Do not enable as-is on a public repository.
+# The original project used self-hosted runners and SSH deployment secrets.
+
+name: CI-Starz-dot-Work
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  backend:
+    runs-on: self-hosted
+
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: job_aggregator_test
+          MYSQL_USER: app
+          MYSQL_PASSWORD: app
+        ports:
+          - 33307:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
+          --health-interval=5s
+          --health-timeout=3s
+          --health-retries=20
+
+    defaults:
+      run:
+        working-directory: starz-backend
+
+    env:
+      NODE_ENV: test
+      JWT_SECRET: test_jwt_secret_value_for_ci_tests
+      SWAGGER_ENABLED: "false"
+      TEST_DB_HOST: 127.0.0.1
+      TEST_DB_PORT: 33307
+      TEST_DB_NAME: job_aggregator_test
+      TEST_DB_ADMIN_USER: root
+      TEST_DB_ADMIN_PASSWORD: root
+      TEST_DB_USER: root
+      TEST_DB_PASSWORD: root
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: starz-backend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build checks
+        run: npm run build
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit and smoke tests
+        run: npm test
+
+      - name: Database integration tests
+        run: npm run test:db
+
+      - name: Audit
+        run: npm run audit
+  
+  frontend:
+    runs-on: self-hosted
+
+    defaults:
+      run:
+        working-directory: starz-frontend
+
+    env:
+      NEXT_PUBLIC_API_URL: http://localhost:3001
+      NEXT_PUBLIC_AI_API_URL: http://localhost:8080
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: starz-frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+  deploy:
+    needs:
+      - backend
+      - frontend
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Deploy production on VM
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.PROD_VM_HOST }}
+          username: ${{ secrets.PROD_VM_USER }}
+          key: ${{ secrets.PROD_VM_SSH_KEY }}
+          script_stop: true
+          script: |
+            set -e
+            cd ~/projets/starz_work
+            git pull
+            git rev-parse --short HEAD
+            docker compose --env-file deploy/online/.env -f deploy/online/docker-compose.yml up --build -d
+            docker compose --env-file deploy/online/.env -f deploy/online/docker-compose.yml ps
