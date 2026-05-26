@@ -14,8 +14,11 @@ This code is published for demonstration purposes only.
 (Prototype)
 - Figma 
 
-(Backend, removed for the preview)
+(Backend)
 - NodesJS with ExpressJS -> easy and fast backend 
+- Zod
+- Jest, Supertest
+- Nodemailer
 
 (Database)
 - MySQL -> Database 
@@ -81,7 +84,8 @@ docker compose -f deploy/localhost/docker-compose.yml up --build
 | | - - 07_decisions-data-welovedevs
 | | - - 08_decisions-ia
 | | - - 09_decisions-ci
+| | - - 10_audit-cybersecurity
+| | - - 11_schema_database
+| | - - 12_preuve_gestion_de_projet
+| | - - 13_audit-accessibility
 ```
-
-
-
